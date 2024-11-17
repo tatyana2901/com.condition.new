@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Определение температурного режима</title>
+</head>
+<body>
+<form action="/getresult">
+    Текущая температура <input name="t1" checked="checked" required>
+    <br>
+    Желаемая температура <input name="t2" checked="checked" required>
+    <br>
+    Выберете режим работы кондиционера:
+    <br>
+    <label><input type="radio" name="operation" value="fan" class="fake-checkbox" checked="checked"> fan </label>
+    <label> <input type="radio" name="operation" value="auto" class="fake-checkbox" checked="checked"> auto</label>
+    <label><input type="radio" name="operation" value="freeze" class="fake-checkbox" checked="checked">freeze</label>
+    <label><input type="radio" name="operation" value="heat" class="fake-checkbox" checked="checked">heat</label>
+    <br>
+    <input type="submit" value="Посчитать результат">
+</form>
+<p th:if="${res!=null}" >Через 1 час температура составит: <span th:text="${res}"></span> градусов </p>
+<p th:if="${error!=null}" >В результате расчета возникла ошибка: <span th:text="${error}"></span> </p>
+<br>
+<a href="/history">показать список</a>
+<p th:if="${list!=null}"> <span th:text="${list}"></span></p>
+</body>
+</html>
